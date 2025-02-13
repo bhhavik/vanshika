@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Message for Vanshika</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: pink;
+            margin: 0;
+            padding: 0;
+        }
+        #loading, #book, #nameInputSection, #readySection {
+            display: none;
+        }
+        .page {
+            width: 80%;
+            max-width: 600px;
+            min-height: 300px;
+            margin: auto;
+            background: white;
+            border: 5px solid black;
+            padding: 20px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            display: none;
+            font-size: 22px;
+            text-align: left;
+        }
+        .next-btn {
+            background: black;
+            color: pink;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="nameInputSection">
+        <h2>Enter your name:</h2>
+        <input type="text" id="nameInput">
+        <button onclick="checkName()">Submit</button>
+    </div>
+
+    <div id="loading">
+        <h2>Loading... <span id="progress">0%</span></h2>
+    </div>
+
+    <div id="readySection">
+        <h2>Are you ready??</h2>
+        <button class="next-btn" onclick="showBook()">Next</button>
+    </div>
+
+    <div id="book">
+        <div class="page" id="page1">
+            <p>Hey Vanshika! Happy one month of being together. I didn’t plan to celebrate this, but I promise to make our one-year anniversary special. I know you trust me, and I promise to keep that trust.</p>
+            <button class="next-btn" onclick="nextPage(2)">Next</button>
+        </div>
+        <div class="page" id="page2">
+            <p>Don’t worry about us; I know things are tough. Your family loves you, even if it doesn’t feel like it. It takes time to build trust, but our love is worth waiting for. I'll be patient and support you, no matter how long it takes. You don’t need to apologize for not meeting me—I understand.</p>
+            <button class="next-btn" onclick="nextPage(3)">Next</button>
+        </div>
+        <div class="page" id="page3">
+            <p>I don’t know what you want for our future, but I want you to know that I see you as my partner, my forever love. And I just want to say: <b>I LOVE YOU, Vanshika!</b></p>
+            <button class="next-btn" onclick="nextPage(4)">Next</button>
+        </div>
+        <div class="page" id="page4">
+            <p>Here are a few reasons why I love you:</p>
+            <p>1. Honesty<br>2. Your pretty eyes<br>3. You’re beautiful<br>4. Gentle nature<br>5. Selflessness<br>6. Sweetness<br>7. Caring personality<br>8. Creativity<br>9. Kindness to everyone<br>10. Your sense of humor<br>11. Genuine heart<br>12. Cool personality<br>13. You make me happy<br>14. Responsibility<br>15. Kindness</p>
+            <button class="next-btn" onclick="nextPage(5)">Next</button>
+        </div>
+        <div class="page" id="page5">
+            <p>16. Hardworking<br>17. You correct me when I’m wrong<br>18. Talented<br>19. Strong-willed<br>20. Loyalty<br>21. Intelligence<br>22. Your amazing nature<br>23. Your perfection<br>24. Kindness<br>25. Your skills<br>26. Your lovely soul<br>27. You love me, and I love you just as much<br>28. You’re like an angel to me<br>29. Your unique personality<br>30. Your beauty</p>
+            <button class="next-btn" onclick="nextPage(6)">Next</button>
+        </div>
+        <div class="page" id="page6">
+            <p>31. Your voice<br>32. I love spending time with you<br>33. Your laugh is the cutest<br>34. I feel lucky to have you<br>35. You are my favorite ‘hello’ and hardest ‘goodbye’<br>36. I love how you care about little things<br>37. You have the sweetest heart<br>38. You are my happiness<br>39. "Your (or else...)" became my motivation ☠️<br>40. You are my dream girl and my dream come true ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("nameInputSection").style.display = "block";
+
+        function checkName() {
+            var name = document.getElementById("nameInput").value;
+            if (name.toLowerCase() === "vanshika") {
+                document.getElementById("nameInputSection").style.display = "none";
+                document.getElementById("loading").style.display = "block";
+                loadProgress();
+            } else {
+                alert("Who are you? This page is only for Vanshika! Send her this now!!!");
+            }
+        }
+
+        function loadProgress() {
+            let progress = 0;
+            let interval = setInterval(function() {
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    document.getElementById("loading").style.display = "none";
+                    document.getElementById("readySection").style.display = "block";
+                } else {
+                    progress++;
+                    document.getElementById("progress").innerText = progress + "%";
+                }
+            }, 60);
+        }
+
+        function showBook() {
+            document.getElementById("readySection").style.display = "none";
+            document.getElementById("book").style.display = "block";
+            document.getElementById("page1").style.display = "block";
+        }
+
+        function nextPage(pageNum) {
+            let pages = document.getElementsByClassName("page");
+            for (let i = 0; i < pages.length; i++) {
+                pages[i].style.display = "none";
+            }
+            document.getElementById("page" + pageNum).style.display = "block";
+        }
+    </script>
+</body>
+</html>
